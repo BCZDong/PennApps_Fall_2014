@@ -7,5 +7,5 @@ Penn Apps Fall 2014
 Team Members:  
 Bill Dong  
 Jesse Ellingworth  
-Jeremy Ma 
+Jeremy Ma  
 Bob Teoh  
