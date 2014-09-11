@@ -1,4 +1,4 @@
-PennApps_Fall_2014
+PennApps Fall 2014
 ==================
 
 University of Pennsylvania  
