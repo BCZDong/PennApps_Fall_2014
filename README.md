@@ -5,7 +5,7 @@ University of Pennsylvania
 Penn Apps Fall 2014  
   
 Team Members:  
-Bill Donng  
+Bill Dong  
 Jesse Ellingworth  
 Jeremy Ma 
 Bob Teoh  
