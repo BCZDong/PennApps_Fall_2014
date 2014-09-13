@@ -1,16 +1,21 @@
 
-function main(req, response) {
-  console.log("Request handler '/' was called.");
-  response.writeHead(200, {"Content-Type": "text/plain"});
-  
-  //repsonse data
-  var string = "homepage";
-  response.end(string);
-         
-  response.end();
+function main(request, response) {
+  console.log("Request handler '/' was called");
+
+  var fs = require('fs');
+  var content = '../client_side/index.html';
+
+  fs.readFile(content, function(err, contents){
+    if(!err){
+      response.end(contents);
+    } else {
+      console.dir(err);
+    };
+  });
+
 }
  
-function getClasses(req, response) {
+function getClasses(request, response) {
   console.log("Request handler 'getClasses' was called.");
   response.writeHead(200, {"Content-Type": "text/plain"});
    
@@ -19,25 +24,8 @@ function getClasses(req, response) {
   response.end(string);
          
   response.end();
+
 }
-
-
-/*
-function intermediate(request, response) {
-  var fs = require('fs');
-  //console.log("Request handler 'videoPlayer' was called.");
-    var content = 'intermediate.html';
-    //var content = 'video_player.html';
-  fs.readFile(content,function(err,contents){
-    if(!err){
-      response.end(contents);
-    } else {
-      console.dir(err);
-    };
-  });
-};
-*/
-
  
-exports.getClasses = getClasses;
 exports.main = main;
+exports.getClasses = getClasses;

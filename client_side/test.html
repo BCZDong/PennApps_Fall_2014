@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from www.penncoursenotify.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2014 04:22:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hate PennInTouch? So do we. Come sign up to be notified whenever a course opens up instead of dealing with PennInTouch.">
+  <meta name="author" content="Fabio Fleitas">
+  <link href="favicon.ico"  rel="shortcut icon" type="image/x-icon" />
+
+  <!-- Metatags for Facebook Share -->
+  <meta property="og:site_name" content="PennCourseNotify"/>
+  <meta property="og:image" content="images/facebook-share-image.png"/>
+  <meta property="og:description" content="Have you ever had a course that you wanted to get into on PennInTouch but it was closed? Do you hate having to keep checking to see if it is open or begging people to leave so you can get into the section that fits into your schedule? Do you just hate PennInTouch?
+
+  Let PennCourseNotify do the work for you. Just put the course you are looking for, your email, and you will be notified whenever the course opens up on PennInTouch. Simple."/>
+
+  <title>PennCourseNotify</title>
+
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+
+      <!-- Bootstrap core CSS -->
+      <link href="css/bootstrap.css" rel="stylesheet">
+
+      <!-- Jumbotron CSS -->
+      <link href="css/jumbotron-narrow.css" rel="stylesheet">
+
+      <!-- jQuery and Bootstrap -->
+      <script src="js/jquery-1.10.2.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+
+      <!-- Twitter typeahead -->
+      <link href="css/typeahead.css" rel="stylesheet">
+      <script src="js/typeahead.js"></script>
+      <script src="js/hogan-2.0.0.js"></script>
+
+      <!-- Custom CSS -->
+      <link href="css/custom.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>PennCourseNotify</h1>
+
+        <p>Get notified whenever a course has an open spot</p>        
+        <p class="info-text"><img class="info-img" src="images/info.png"/><a href="chrome.html">Want "Notify Me!" buttons while browsing courses on PennInTouch?</a></p>
+
+        
+
+        <form id="course-form" method="post">
+         <input class="typeahead" type="text" name="course" value="" placeholder="Search Courses">
+
+        <div class="course-alert">
+          <div class="arrow-up"></div>
+          <div class="alert alert-danger">
+            Seems like this course is already OPEN
+          </div>
+        </div>
+
+        <input class="email-input" type="text" name="email" value="" placeholder="Email">
+        <div class="error"></div>
+
+        <p><button class="btn btn-lg btn-success" type="submit">Notify Me!</button></p>
+
+        </form>
+
+        <!-- <div class="well well-sm donate-well">
+          
+          <h2>Donate :)</h2>
+          <p>If this has helped you get into any courses consider a small donation of $5 (or whatever you want) and you can help me pay for my <strong><em>McChicken</em></strong> addiction.</p>
+          Donate: <a href="https://venmo.com?txn=Pay&recipients=fabio-fleitas&amount=5&note=PennCourseNotify%20donation"><img src="images/venmo.png" /></a>
+        </div> -->
+        
+      </div>
+
+
+      <div class="footer">
+        <p>Created by <a href="http://fabiofleitas.com/">Fabio Fleitas</a> | <a href="https://github.com/FabioFleitas"><img src="images/github.ico" style="width: 16px;"/> Github</a></p>
+        <p>Problems? Questions? Shoot me an email: <a href="mailto:contact@penncoursenotify.com">contact@penncoursenotify.com</a></p>
+      </div>
+
+    </div>
+
+
+    <!-- Twitter Typeahead -->
+    <script>
+    // Slides up error
+    setTimeout(function(){
+        $('.error').slideUp();
+    }, 7000);  
+
+    // Twitter typeahead script
+    $('input.typeahead').typeahead({
+      name: 'courses',
+      prefetch: '/course_list',
+      template: [
+      '<p class="course-title">{{value}}</p>',
+      '<p class="course-type">{{title}} - {{course_type}}</p>'
+      ].join(''),
+      engine: Hogan
+    })
+    .on('keyup', function() {
+      $('.course-alert').slideUp();
+    })
+    .on('typeahead:selected typeahead:autocompleted', function ($e, datum) {
+      $.get("/check?course=" + datum.value, function(data, status) {
+        if (data === "O") {
+          $('.course-alert').fadeIn();
+          $('input.tt-hint').css('background-color', '#f2dede');
+        }
+        else {
+          $('input.tt-hint').css('background-color', '#FFFFFF');
+        }
+      })
+    });
+    </script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-46216497-1', 'penncoursenotify.com');
+    ga('send', 'pageview');
+    </script>
+
+
+  </body>
+  
+<!-- Mirrored from www.penncoursenotify.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2014 04:22:48 GMT -->
+</html>
