@@ -5,7 +5,7 @@ function main(request, response) {
   var fs = require('fs');
 
   //serving test html page
-  var content = '../client_side/test.html';
+  var content = 'test.html';
 
   fs.readFile(content, function(err, contents){
     if(!err){
