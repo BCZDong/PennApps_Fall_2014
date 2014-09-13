@@ -1,0 +1,7 @@
+package json_parser;
+
+import java.io.InputStream;
+	
+public class parser {
+	InputStream in = new InputStream("'text.txt");
+}

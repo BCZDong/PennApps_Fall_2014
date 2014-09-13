@@ -1,0 +1,13 @@
+package json_parser;
+
+import java.io.FileReader;
+import java.io.InputStream;
+	
+public class parser {
+	FileReader filereader = null;
+	try {
+		filereader = new FileReader("course_data.txt");
+	} catch (new FileNotFoundException()) {
+		
+	}
+}

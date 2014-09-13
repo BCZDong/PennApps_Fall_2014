@@ -55,9 +55,11 @@
 
       <!--START Input field -->
       <!--==========================================================-->
-      <div id="the-basics">
-        <input class="typeahead" type="text" placeholder="Enter Course Code">
+      <div class="input-group">
+        <span class="input-group-addon">Course Code</span>
+        <input type="text" class="form-control" placeholder="Enter Course Code">
       </div>
+      <button type="button" onclick="proceed();">Submit</button>
       <!--==========================================================-->
       <!--END Input field -->
 
@@ -73,43 +75,14 @@
     <!--Start Type Ahead-->
     <!--===================================================-->
     <script>
-       var substringMatcher = function(strs) {
-        return function findMatches(q, cb) {
-          var matches, substrRegex;
-       
-          // an array that will be populated with substring matches
-          matches = [];
-       
-          // regex used to determine if a string contains the substring `q`
-          substrRegex = new RegExp(q, 'i');
-       
-          // iterate through the pool of strings and for any string that
-          // contains the substring `q`, add it to the `matches` array
-          $.each(strs, function(i, str) {
-            if (substrRegex.test(str)) {
-              // the typeahead jQuery plugin expects suggestions to a
-              // JavaScript object, refer to typeahead docs for more info
-              matches.push({ value: str });
-            }
-          });
-       
-          cb(matches);
-        };
-      };
-       
-      var courses = ['CIS', 'MATH', 'STAT'];
-       
-      $('#the-basics .typeahead').typeahead({
-        hint: true,
-        highlight: true,
-        minLength: 1
-      },
-      {
-        name: 'courses',
-        displayKey: 'value',
-        source: substringMatcher(courses)
-      });
-
+      function proceed () {
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', 'http://google.com');
+        form.style.display = 'hidden';
+        document.body.appendChild(form)
+        form.submit();
+      }
     </script>
     <!--===================================================-->
     <!--End Type Ahead-->
