@@ -15,7 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
     <!-- jQuey & Typeahead -->
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    
     <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
 
     <!-- starter css -->
@@ -55,14 +55,16 @@
 
       <!--START Input field -->
       <!--==========================================================-->
-      <div class="input-group">
+      <div class="input_total">
+      <div class="input_group">
         <span class="input-group-addon">Course Code</span>
-        <input type="text" class="form-control" placeholder="Enter Course Code">
-      </div>
+        <input type="text" class="form-control" placeholder="Enter Course Code" id="course_input">
+      <button type="button"  id="createInput">Add Course</button>
       <button type="button" onclick="proceed();">Generate</button>
       <!--==========================================================-->
       <!--END Input field -->
-
+      </div>
+      </div>
     </div><!-- /.container -->
 
 
@@ -70,19 +72,38 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  
+    <script>
+        
+       addName = function(){
+
+         onThis = $("#createInput");
+         nameFull = function(){
+          
+             var num = 1;
+             onThis.closest('.input-group').find('.form-control').each(function(index){
+              num = index+1;   
+             });
+
+             return "course_input"+num;
+         }
+         
+               onThis.parent().clone().find('.form-control').attr('name',nameFull).appendTo($(this).closest('.input_total')).after("<br />"); 
+    }
+    $('#createInput').each(function(index){
+    $(this).click(addName); 
+    });
+ 
+    passString = function() {
+      $('.form-control').each(function(index){
+        $(this).
+
+    }
+    </script>
 
     <!--Start Type Ahead-->
     <!--===================================================-->
     <script>
-      function proceed () {
-        var form = document.createElement('form');
-        form.setAttribute('method', 'post');
-        form.setAttribute('action', 'http://google.com');
-        form.style.display = 'hidden';
-        document.body.appendChild(form)
-        form.submit();
-      }
+
     </script>
     <!--===================================================-->
     <!--End Type Ahead-->
