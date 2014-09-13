@@ -3,7 +3,9 @@ function main(request, response) {
   console.log("Request handler '/' was called");
 
   var fs = require('fs');
-  var content = '../client_side/index.html';
+
+  //serving test html page
+  var content = '../client_side/test.html';
 
   fs.readFile(content, function(err, contents){
     if(!err){
