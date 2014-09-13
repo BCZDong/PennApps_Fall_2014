@@ -16,7 +16,8 @@ function main(request, response) {
   });
 
 }
- 
+
+
 function getClasses(request, response) {
   console.log("Request handler 'getClasses' was called.");
   response.writeHead(200, {"Content-Type": "text/plain"});
