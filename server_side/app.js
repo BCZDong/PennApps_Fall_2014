@@ -5,6 +5,7 @@ var server = require("./server"),
     exec = require('child_process').exec;
   
 var handle = {}
+handle["/"] = requestHandlers.main;
 handle["/getClasses"] = requestHandlers.getClasses;
  
 var port = process.env.PORT || 8081;

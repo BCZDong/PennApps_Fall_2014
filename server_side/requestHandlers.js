@@ -1,14 +1,26 @@
 
- 
-function getClasses(req, response) {
-  console.log("Request handler 'getClasses' was called.");
+function main(req, response) {
+  console.log("Request handler '/' was called.");
   response.writeHead(200, {"Content-Type": "text/plain"});
-   
+  
+  //repsonse data
+  var string = "homepage";
   response.end(string);
          
   response.end();
 }
  
+function getClasses(req, response) {
+  console.log("Request handler 'getClasses' was called.");
+  response.writeHead(200, {"Content-Type": "text/plain"});
+   
+  //response data
+  var string = "classes data";
+  response.end(string);
+         
+  response.end();
+}
+
 
 /*
 function intermediate(request, response) {
@@ -28,3 +40,4 @@ function intermediate(request, response) {
 
  
 exports.getClasses = getClasses;
+exports.main = main;
