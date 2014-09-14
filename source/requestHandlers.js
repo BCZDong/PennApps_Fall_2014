@@ -19,15 +19,15 @@ function main(request, response) {
 
 
 function getClasses(request, response) {
-  console.log("Request handler 'getClasses' was called.");
-  response.writeHead(200, {"Content-Type": "text/plain"});
-   
-  //response data
-  var string = "classes data";
-  response.end(string);
-         
-  response.end();
-
+    console.log("Request handler 'getClasses' was called");
+     var body = '';
+    request.on('data', function(chunk) {
+        body += chunk.toString('utf8');
+    });
+    request.on('end', function() {
+        response.end();    
+    });
+    console.log(body);
 }
  
 exports.main = main;

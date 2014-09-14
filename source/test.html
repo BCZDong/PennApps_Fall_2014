@@ -49,8 +49,8 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>My name is</h1>
-        <p class="lead">Bill<br> Dong</p>
+        <h1>Penn Time</h1>
+        <p class="lead">BJ<br> BJ</p>
       </div>
 
       <!--START Input field -->
@@ -60,7 +60,7 @@
         <span class="input-group-addon">Course Code</span>
         <input type="text" class="form-control" placeholder="Enter Course Code" id="course_input">
       <button type="button"  id="createInput">Add Course</button>
-      <button type="button" onclick="proceed();">Generate</button>
+      <button type="button"  id="generate">Generate</button>
       <!--==========================================================-->
       <!--END Input field -->
       </div>
@@ -89,27 +89,31 @@
          
                onThis.parent().clone().find('.form-control').attr('name',nameFull).appendTo($(this).closest('.input_total')).after("<br />"); 
     }
+
     $('#createInput').each(function(index){
-    $(this).click(addName); 
+      $(this).click(addName);
     });
- 
-    passString = function() {
-      $('.form-control').each(function(index){
-        $(this).
 
+    var classes = "";
+    ///////////////////////////////////////////////////
+    function sendClasses() {
+        $.post( "http://158.130.106.101:8081/getClasses", classes);
+        console.log("sent: " + classes);
+        classes = ""; //reset
     }
+    ///////////////////////////////////////////////////
+    passString = function() {
+      $('.form-control').each(function(i, obj) {
+        classes = classes + " " +  $(this).val();
+      });
+      sendClasses();
+    }
+
+    $('#generate').each(function(index){
+      $(this).click(passString); 
+    });
+
     </script>
-
-    <!--Start Type Ahead-->
-    <!--===================================================-->
-    <script>
-
-    </script>
-    <!--===================================================-->
-    <!--End Type Ahead-->
-
-
-
 
     
 </body></html>

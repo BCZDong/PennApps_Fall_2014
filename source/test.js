@@ -24,10 +24,8 @@
          }
             onThis.parent().clone().find('.person').attr('name',nameFull).appendTo($(this).closest('.addpeople')).after("<br />"); 
     }
-     
-    $('span.rsvp').each(function(index){
-    $(this).click(addName); 
-    });
+    
+ 
     
     $('.slider-v2').each(function(index){
     $(this).click(checkbox); 
