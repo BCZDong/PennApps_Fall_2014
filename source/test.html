@@ -97,6 +97,7 @@
     var classes = "";
     ///////////////////////////////////////////////////
     function sendClasses() {
+ 
         $.post( "http://158.130.106.101:8081/getClasses", classes);
         console.log("sent: " + classes);
         classes = ""; //reset
@@ -107,6 +108,7 @@
         classes = classes + " " +  $(this).val();
       });
       sendClasses();
+      window.location.replace("http://158.130.106.101:8081/timetable");
     }
 
     $('#generate').each(function(index){

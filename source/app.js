@@ -7,6 +7,7 @@ var server = require("./server"),
 var handle = {}
 handle["/"] = requestHandlers.main;
 handle["/getClasses"] = requestHandlers.getClasses;
+handle["/timetable"] = requestHandlers.timetable;
  
 var port = process.env.PORT || 8081;
 console.log("ip address: " + process.env.PORT);
